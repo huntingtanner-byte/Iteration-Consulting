@@ -23,7 +23,7 @@
   "name": "Iteration Consulting",
   "description": "Team building events, business and team consulting, one-on-one coaching, and youth programs. Southern California based; travels to clients.",
   "url": "https://iterationconsultingllc.com",
-  "areaServed": ["Southern California", "Orange County", "Los Angeles", "San Diego", "Utah"],
+  "areaServed": ["Southern California", "Orange County", "Los Angeles", "San Diego"],
   "priceRange": "Contact for quote"
 }
 </script>
@@ -39,8 +39,9 @@
   --stone-light:#C7C5C2;  /* body text on dark */
   --paper:#F5F4F2;        /* light section */
   --paper-line:#DEDCD8;
-  --ember:#C05621;        /* burnt orange */
-  --ember-deep:#9C4218;   /* more burnt, hover */
+  --ember:#C05621;        /* burnt orange: the mark, buttons, rules */
+  --ember-deep:#9C4218;   /* more burnt: hover, and orange text on paper */
+  --ember-bright:#D2682C; /* same family, lifted just enough for small text on black */
   --white:#FFFFFF;
 
   --display:'Bebas Neue', Impact, sans-serif;
@@ -54,6 +55,8 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+/* anchor targets clear the fixed nav instead of hiding under it */
+:target,section[id],header[id]{scroll-margin-top:84px;}
 
 body{
   font-family:var(--body);
@@ -93,6 +96,9 @@ a{color:inherit;}
 .eb b:nth-child(1){top:0;}
 .eb b:nth-child(2){top:50%;transform:translateY(-50%);background:var(--ember);}
 .eb b:nth-child(3){bottom:0;}
+/* when the bars sit mid-word, the flat right edge crowds the next letter.
+   the letters themselves have curves that self-space; the bars do not. */
+.eb--in{margin-right:.10em;}
 
 /* ============ NAV ============ */
 .nav{
@@ -130,7 +136,9 @@ a{color:inherit;}
   min-height:100svh;
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;position:relative;overflow:hidden;
-  padding:120px 24px 80px;
+  /* bottom-heavy padding biases the block above true center, so the gap
+     under the nav reads tight instead of empty */
+  padding:84px 24px 148px;
   background:
     radial-gradient(1100px 520px at 50% -10%, #1A1A1A 0%, var(--ink) 62%);
 }
@@ -140,8 +148,9 @@ a{color:inherit;}
   background:repeating-linear-gradient(to bottom, rgba(255,255,255,.018) 0 1px, transparent 1px 9px);
 }
 .hero-eyebrow{
-  font-size:.78rem;font-weight:600;letter-spacing:.5em;text-transform:uppercase;
-  color:var(--stone);margin-bottom:34px;padding-left:.5em; /* offset tracking */
+  font-size:clamp(.82rem,2.1vw,1.02rem);
+  font-weight:600;letter-spacing:.44em;text-transform:uppercase;
+  color:var(--stone-light);margin-bottom:30px;padding-left:.44em; /* offset tracking */
 }
 .hero h1{
   font-family:var(--display);
@@ -184,13 +193,13 @@ a{color:inherit;}
 }
 
 /* ============ SECTION SHARED ============ */
-section{padding:110px 0;}
+section{padding:clamp(74px,9vw,110px) 0;}
 .eyebrow{
   display:flex;align-items:center;gap:14px;
-  font-size:.72rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;
-  color:var(--ember);margin-bottom:26px;
+  font-size:.75rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--ember-bright);margin-bottom:26px;
 }
-.eyebrow::before{content:"";width:34px;height:2px;background:var(--ember);}
+.eyebrow::before{content:"";width:34px;height:2px;background:currentColor;}
 h2{
   font-family:var(--display);font-weight:400;color:var(--white);
   font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:.05em;line-height:1.02;
@@ -212,9 +221,9 @@ h2{
 .def-term{
   border-left:3px solid var(--ember);padding-left:26px;
 }
-.def-term h3{
+.def-term h2{
   font-family:var(--display);font-weight:400;font-size:2.4rem;color:var(--white);
-  letter-spacing:.08em;line-height:1;
+  letter-spacing:.08em;line-height:1;margin-bottom:0;
 }
 .def-term .pos{font-size:.8rem;font-style:italic;color:var(--stone);margin-top:6px;}
 .def-term p{margin-top:14px;font-size:1.02rem;}
@@ -245,7 +254,7 @@ h2{
 .pass p{font-size:.98rem;}
 .method-kicker{
   margin-top:54px;text-align:center;
-  font-family:var(--display);font-size:clamp(1.4rem,3vw,2rem);letter-spacing:.16em;color:var(--white);
+  font-family:var(--display);font-size:clamp(1.5rem,3vw,2rem);letter-spacing:.16em;color:var(--white);
 }
 .method-kicker em{font-style:normal;color:var(--ember);}
 
@@ -253,17 +262,17 @@ h2{
 .services{background:var(--paper);color:#3A3A3A;}
 .services h2{color:var(--ink);}
 .services .lede{color:#4A4A4A;}
+/* on paper the accent has to go deeper, not brighter, to stay readable */
+.services .eyebrow{color:var(--ember-deep);}
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--paper-line);margin-top:54px;border:1px solid var(--paper-line);}
 @media(max-width:760px){.svc-grid{grid-template-columns:1fr;}}
-.svc{background:var(--paper);padding:40px 34px 44px;transition:background .25s;}
+.svc{background:var(--paper);padding:44px 34px 48px;transition:background .25s;}
 .svc:hover{background:var(--white);}
-.svc .mark{width:26px;height:20px;color:var(--ink);margin-bottom:24px;}
-.svc .mark b{height:4px;}
 .svc h3{
-  font-family:var(--display);font-weight:400;font-size:1.7rem;letter-spacing:.09em;color:var(--ink);
-  margin-bottom:10px;
+  font-family:var(--display);font-weight:400;font-size:1.85rem;letter-spacing:.09em;color:var(--ink);
+  margin-bottom:14px;
 }
-.svc p{font-size:.97rem;color:#4A4A4A;}
+.svc p{font-size:.97rem;color:#4A4A4A;max-width:44ch;}
 .svc-custom{
   margin-top:44px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:space-between;
   border:1px solid var(--paper-line);background:var(--white);padding:28px 32px;
@@ -307,16 +316,18 @@ input,select,textarea{
   transition:border-color .2s;
   width:100%;
 }
-select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--stone) 50%),linear-gradient(135deg,var(--stone) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;}
+select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--stone) 50%),linear-gradient(135deg,var(--stone) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;}
 textarea{min-height:130px;resize:vertical;}
 input::placeholder,textarea::placeholder{color:#5A5A5A;}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember);}
 :is(a,button,input,select,textarea):focus-visible{outline:2px solid var(--ember);outline-offset:2px;}
 button.btn{border:none;cursor:pointer;font-family:var(--body);grid-column:1/-1;justify-self:start;}
+button.btn:disabled{opacity:.55;cursor:default;}
 .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0;}
 .form-status{grid-column:1/-1;font-size:.92rem;display:none;}
 .form-status.ok{display:block;color:var(--white);}
-.form-status.err{display:block;color:var(--ember);}
+.form-status.err{display:block;color:var(--ember-bright);}
+.form-status a{color:inherit;text-underline-offset:3px;}
 
 /* ============ FOOTER ============ */
 footer{padding:64px 0 46px;border-top:1px solid var(--line);}
@@ -353,7 +364,7 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
   <p class="hero-eyebrow rise d1">Iteration Consulting</p>
   <h1 aria-label="Be Relentless">
     <span class="word rise d2" aria-hidden="true">B<span class="eb"><b></b><b class="mid"></b><b></b></span></span>
-    <span class="word rise d3" aria-hidden="true">RELENTL<span class="eb"><b></b><b class="mid"></b><b></b></span>SS</span>
+    <span class="word rise d3" aria-hidden="true">RELENTL<span class="eb eb--in"><b></b><b class="mid"></b><b></b></span>SS</span>
   </h1>
   <p class="hero-sub rise d4"><strong>We bring the retreat to you.</strong> Team events, consulting, and coaching built around your people. Where they are, and what they're capable of.</p>
   <div class="hero-ctas rise d4">
@@ -368,7 +379,7 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
   <div class="wrap">
     <div class="def-grid">
       <div class="def-term reveal">
-        <h3>It·er·a·tion</h3>
+        <h2>It·er·a·tion</h2>
         <p class="pos">noun</p>
         <p>The repetition of a process, where every pass improves on the last.</p>
       </div>
@@ -398,7 +409,7 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
       </article>
       <article class="pass reveal">
         <p class="pass-label">Pass Two</p>
-        <div class="pass-bars" aria-hidden="true"><i></i><i></i></div>
+        <div class="pass-bars" aria-hidden="true"><i></i><i class="mid"></i></div>
         <h3>Improve</h3>
         <p>Push past comfortable. Physical challenges and team problems that show how your people really operate, and what they can handle.</p>
       </article>
@@ -423,22 +434,18 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
     </div>
     <div class="svc-grid">
       <article class="svc reveal">
-        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
         <h3>Team Building Events</h3>
         <p>Half-day and full-day challenge events for your whole team. Your park, your site, or a location we scout and set up. We bring the experience to you.</p>
       </article>
       <article class="svc reveal">
-        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
         <h3>Business &amp; Team Consulting</h3>
         <p>Get to the root of what's holding the team back. Motivation, standards, communication. Fix it at the source, not the symptom.</p>
       </article>
       <article class="svc reveal">
-        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
         <h3>One-on-One Coaching</h3>
         <p>Direct, personal work for leaders and individuals who want a higher standard, and a straight answer on how to get there.</p>
       </article>
       <article class="svc reveal">
-        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
         <h3>Youth Programs</h3>
         <p>Camps and group events that teach young people effort, discipline, and what it feels like to earn something as a team.</p>
       </article>
@@ -461,7 +468,7 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
       </div>
       <ul class="travel-facts reveal">
         <li><span class="k">Based</span><span class="v">Southern California</span></li>
-        <li><span class="k">Travel</span><span class="v">Anywhere the team is. Utah and beyond.</span></li>
+        <li><span class="k">Travel</span><span class="v">Local to Southern California, able to travel</span></li>
         <li><span class="k">Format</span><span class="v">Half-day &amp; full-day events, weekends available</span></li>
         <li><span class="k">Group size</span><span class="v">Small crews to full companies</span></li>
       </ul>
@@ -480,7 +487,9 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
         <p class="contact-note">Every engagement is scoped on a call. No forms to decode, no fine print.</p>
       </div>
       <form id="contact-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
-        <!-- TODO: replace with the real Web3Forms access key before launch -->
+        <!-- Sign up at web3forms.com using jon@iterationconsultingllc.com and paste the
+             key here. Submissions then land in that inbox. This key is public by design.
+             Until it is set, the form falls back to opening a pre-filled email. -->
         <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
         <input type="hidden" name="subject" value="New inquiry from iterationconsultingllc.com">
         <input type="hidden" name="from_name" value="Iteration Consulting Website">
@@ -507,9 +516,9 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
           <select id="f-size" name="group_size">
             <option value="">Select one</option>
             <option>Just me</option>
-            <option>2–10</option>
-            <option>11–25</option>
-            <option>26–50</option>
+            <option>2 to 10</option>
+            <option>11 to 25</option>
+            <option>26 to 50</option>
             <option>50+</option>
           </select>
         </div>
@@ -552,13 +561,47 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
   els.forEach(function(e){ io.observe(e); });
 })();
 
-// Contact form (Web3Forms via fetch)
+// Contact form (Web3Forms via fetch, with a direct-email fallback)
 (function(){
+  var EMAIL = 'jon@iterationconsultingllc.com';
   var form = document.getElementById('contact-form');
   var status = document.getElementById('form-status');
+  var key = form.elements.access_key.value;
+  var keyReady = key && key.indexOf('YOUR_') !== 0;
+
+  // Pre-fills an email with the answers so an inquiry is never lost: used while
+  // the access key is still a placeholder, and if a submission ever fails.
+  function mailtoLink(){
+    var d = new FormData(form);
+    var body = [
+      'Name: '            + (d.get('name') || ''),
+      'Email: '           + (d.get('email') || ''),
+      'Phone: '           + (d.get('phone') || ''),
+      'Company / Group: ' + (d.get('organization') || ''),
+      'Group size: '      + (d.get('group_size') || ''),
+      '',
+      d.get('message') || ''
+    ].join('\r\n');
+    return 'mailto:' + EMAIL +
+      '?subject=' + encodeURIComponent('New inquiry from iterationconsultingllc.com') +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  function fallback(lead){
+    var link = mailtoLink();
+    status.className = 'form-status err';
+    status.textContent = lead + ' ';
+    var a = document.createElement('a');
+    a.href = link;
+    a.textContent = 'Send it as an email instead.';
+    status.appendChild(a);
+    window.location.href = link;
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(!form.checkValidity()){ form.reportValidity(); return; }
+    if(!keyReady){ fallback('Opening your email app so this reaches us directly.'); return; }
     var btn = form.querySelector('button[type="submit"]');
     btn.disabled = true; btn.textContent = 'Sending…';
     status.className = 'form-status';
@@ -572,8 +615,7 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
         } else { throw new Error(data.message || 'Submission failed'); }
       })
       .catch(function(){
-        status.textContent = 'Something went wrong. Email us directly at jon@iterationconsultingllc.com.';
-        status.className = 'form-status err';
+        fallback('That did not go through.');
       })
       .finally(function(){ btn.disabled = false; btn.textContent = 'Send It'; });
   });
