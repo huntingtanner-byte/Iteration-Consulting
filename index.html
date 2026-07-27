@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iteration Consulting | Be Relentless</title>
+<meta name="description" content="Team building and performance consulting. Half-day and full-day team events, brought to you. Southern California based. We travel to the team.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Iteration Consulting | Be Relentless">
+<meta property="og:description" content="We bring the retreat to you. Team building events, consulting, and coaching built around your people.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iterationconsultingllc.com">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Iteration Consulting",
+  "description": "Team building events, business and team consulting, one-on-one coaching, and youth programs. Southern California based; travels to clients.",
+  "url": "https://iterationconsultingllc.com",
+  "areaServed": ["Southern California", "Orange County", "Los Angeles", "San Diego", "Utah"],
+  "priceRange": "Contact for quote"
+}
+</script>
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#0D0D0D;          /* matte black */
+  --ink-2:#131313;        /* panel black */
+  --ink-3:#1B1B1B;        /* raised black */
+  --line:#2A2A2A;         /* dark rules */
+  --stone:#8A8A8A;        /* stone gray */
+  --stone-light:#C7C5C2;  /* body text on dark */
+  --paper:#F5F4F2;        /* light section */
+  --paper-line:#DEDCD8;
+  --ember:#C05621;        /* burnt orange */
+  --ember-deep:#9C4218;   /* more burnt, hover */
+  --white:#FFFFFF;
+
+  --display:'Bebas Neue', Impact, sans-serif;
+  --body:'Raleway', 'Helvetica Neue', Arial, sans-serif;
+
+  --track-wide:.32em;
+  --track-mid:.18em;
+  --max:1120px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+body{
+  font-family:var(--body);
+  background:var(--ink);
+  color:var(--stone-light);
+  font-size:16px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{max-width:100%;display:block;}
+a{color:inherit;}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+
+/* ============ THE MARK (three bars) ============ */
+.mark{display:inline-flex;flex-direction:column;justify-content:space-between;flex:none;}
+.mark b{display:block;background:currentColor;border-radius:1px;}
+.mark b.mid{background:var(--ember);}
+/* nav-size mark */
+.mark--nav{width:22px;height:17px;}
+.mark--nav b{height:3.5px;}
+/* footer mark */
+.mark--ft{width:30px;height:23px;}
+.mark--ft b{height:5px;}
+
+/* Bars used AS the letter E inside display type (sized in em so it scales) */
+.eb{
+  display:inline-block;
+  position:relative;
+  vertical-align:baseline;
+  overflow:hidden;        /* baseline becomes the bottom edge, so the bars sit ON the type baseline */
+  width:.56em;
+  height:.70em;           /* Bebas Neue cap height, so the bars match the letters exactly */
+}
+.eb b{position:absolute;left:0;right:0;height:.15em;background:currentColor;}
+.eb b:nth-child(1){top:0;}
+.eb b:nth-child(2){top:50%;transform:translateY(-50%);background:var(--ember);}
+.eb b:nth-child(3){bottom:0;}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(13,13,13,.88);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{
+  max-width:var(--max);margin:0 auto;padding:0 24px;
+  height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);}
+.brand-name{font-family:var(--display);font-size:1.15rem;letter-spacing:var(--track-mid);line-height:1;padding-top:2px;}
+.brand-name small{display:block;font-size:.52rem;letter-spacing:.42em;color:var(--stone);margin-top:3px;}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{
+  text-decoration:none;font-size:.72rem;font-weight:600;
+  letter-spacing:var(--track-mid);text-transform:uppercase;color:var(--stone-light);
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{
+  text-decoration:none;font-size:.72rem;font-weight:700;letter-spacing:var(--track-mid);
+  text-transform:uppercase;color:var(--white);
+  border:1px solid var(--ember);padding:10px 18px;
+  transition:background .2s,border-color .2s;
+}
+.nav-cta:hover{background:var(--ember);border-color:var(--ember);}
+@media(max-width:760px){ .nav-links{display:none;} }
+
+/* ============ HERO ============ */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;position:relative;overflow:hidden;
+  padding:120px 24px 80px;
+  background:
+    radial-gradient(1100px 520px at 50% -10%, #1A1A1A 0%, var(--ink) 62%);
+}
+/* faint horizontal grain echoing the bars */
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,.018) 0 1px, transparent 1px 9px);
+}
+.hero-eyebrow{
+  font-size:.78rem;font-weight:600;letter-spacing:.5em;text-transform:uppercase;
+  color:var(--stone);margin-bottom:34px;padding-left:.5em; /* offset tracking */
+}
+.hero h1{
+  font-family:var(--display);
+  font-weight:400;
+  color:var(--white);
+  font-size:clamp(3.4rem, 11.5vw, 8.2rem);
+  letter-spacing:.06em;
+  line-height:.95;
+  display:flex;align-items:baseline;justify-content:center;flex-wrap:wrap;
+  gap:0 .28em;
+}
+.hero h1 .word{display:block;white-space:nowrap;}
+.hero-sub{
+  margin-top:38px;max-width:560px;
+  font-size:1.06rem;color:var(--stone-light);
+}
+.hero-sub strong{color:var(--white);font-weight:600;}
+.hero-ctas{margin-top:44px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.btn{
+  display:inline-block;text-decoration:none;
+  font-size:.78rem;font-weight:700;letter-spacing:var(--track-mid);text-transform:uppercase;
+  padding:16px 34px;transition:background .2s,color .2s,border-color .2s;
+}
+.btn-solid{background:var(--ember);color:var(--white);}
+.btn-solid:hover{background:var(--ember-deep);}
+.btn-ghost{border:1px solid var(--line);color:var(--stone-light);}
+.btn-ghost:hover{border-color:var(--stone);color:var(--white);}
+.hero-foot{
+  position:absolute;bottom:28px;left:0;right:0;
+  display:flex;justify-content:center;
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);
+}
+
+/* hero load-in */
+.rise{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
+.rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.2s}.rise.d3{animation-delay:.34s}.rise.d4{animation-delay:.5s}
+@keyframes rise{to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){
+  .rise{opacity:1;transform:none;animation:none;}
+}
+
+/* ============ SECTION SHARED ============ */
+section{padding:110px 0;}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-size:.72rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--ember);margin-bottom:26px;
+}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--ember);}
+h2{
+  font-family:var(--display);font-weight:400;color:var(--white);
+  font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:.05em;line-height:1.02;
+  margin-bottom:22px;
+}
+.lede{max-width:640px;font-size:1.05rem;}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1;transform:none;transition:none;}
+}
+
+/* ============ DEFINITION ============ */
+.definition{border-top:1px solid var(--line);}
+.def-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:70px;align-items:start;}
+@media(max-width:860px){.def-grid{grid-template-columns:1fr;gap:40px;}}
+.def-term{
+  border-left:3px solid var(--ember);padding-left:26px;
+}
+.def-term h3{
+  font-family:var(--display);font-weight:400;font-size:2.4rem;color:var(--white);
+  letter-spacing:.08em;line-height:1;
+}
+.def-term .pos{font-size:.8rem;font-style:italic;color:var(--stone);margin-top:6px;}
+.def-term p{margin-top:14px;font-size:1.02rem;}
+.def-copy p{margin-bottom:20px;font-size:1.05rem;}
+.def-copy p strong{color:var(--white);font-weight:600;}
+.def-kicker{
+  font-family:var(--display);font-size:1.5rem;letter-spacing:.14em;color:var(--white);
+}
+.def-kicker em{font-style:normal;color:var(--ember);}
+
+/* ============ METHOD (signature) ============ */
+.method{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);margin-top:54px;}
+@media(max-width:860px){.method-grid{grid-template-columns:1fr;}}
+.pass{background:var(--ink-2);padding:44px 34px 48px;position:relative;transition:background .25s;}
+.pass:hover{background:var(--ink-3);}
+.pass-label{
+  font-size:.68rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--stone);
+}
+/* iteration markers: pass one = one bar, pass three completes the mark */
+.pass-bars{height:34px;display:flex;flex-direction:column;justify-content:flex-end;gap:5px;margin:26px 0 22px;}
+.pass-bars i{display:block;width:44px;height:6px;background:var(--white);border-radius:1px;}
+.pass-bars i.mid{background:var(--ember);}
+.pass h3{
+  font-family:var(--display);font-weight:400;font-size:2rem;letter-spacing:.1em;color:var(--white);
+  margin-bottom:12px;
+}
+.pass p{font-size:.98rem;}
+.method-kicker{
+  margin-top:54px;text-align:center;
+  font-family:var(--display);font-size:clamp(1.4rem,3vw,2rem);letter-spacing:.16em;color:var(--white);
+}
+.method-kicker em{font-style:normal;color:var(--ember);}
+
+/* ============ SERVICES (light) ============ */
+.services{background:var(--paper);color:#3A3A3A;}
+.services h2{color:var(--ink);}
+.services .lede{color:#4A4A4A;}
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--paper-line);margin-top:54px;border:1px solid var(--paper-line);}
+@media(max-width:760px){.svc-grid{grid-template-columns:1fr;}}
+.svc{background:var(--paper);padding:40px 34px 44px;transition:background .25s;}
+.svc:hover{background:var(--white);}
+.svc .mark{width:26px;height:20px;color:var(--ink);margin-bottom:24px;}
+.svc .mark b{height:4px;}
+.svc h3{
+  font-family:var(--display);font-weight:400;font-size:1.7rem;letter-spacing:.09em;color:var(--ink);
+  margin-bottom:10px;
+}
+.svc p{font-size:.97rem;color:#4A4A4A;}
+.svc-custom{
+  margin-top:44px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:space-between;
+  border:1px solid var(--paper-line);background:var(--white);padding:28px 32px;
+}
+.svc-custom p{font-size:1.02rem;color:var(--ink);max-width:640px;}
+.svc-custom p strong{font-weight:700;}
+.svc-custom .btn-solid{white-space:nowrap;}
+
+/* ============ WE COME TO YOU ============ */
+.travel{border-bottom:1px solid var(--line);}
+.travel-in{display:grid;grid-template-columns:1.3fr 1fr;gap:70px;align-items:center;}
+@media(max-width:860px){.travel-in{grid-template-columns:1fr;gap:40px;}}
+.travel h2 em{font-style:normal;color:var(--ember);}
+.travel-facts{list-style:none;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
+.travel-facts li{
+  display:flex;justify-content:space-between;gap:20px;align-items:baseline;
+  padding:18px 0;border-bottom:1px solid var(--line);
+}
+.travel-facts .k{
+  font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);flex:none;
+}
+.travel-facts .v{font-size:.95rem;color:var(--stone-light);text-align:right;}
+
+/* ============ CONTACT ============ */
+.contact{background:var(--ink-2);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:start;}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:44px;}}
+.contact .lede{margin-bottom:26px;}
+.contact-note{font-size:.9rem;color:var(--stone);}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:560px){form{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:8px;}
+.field.full{grid-column:1/-1;}
+label{
+  font-size:.68rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);
+}
+input,select,textarea{
+  font-family:var(--body);font-size:.98rem;color:var(--white);
+  background:var(--ink);border:1px solid var(--line);
+  padding:14px 16px;border-radius:0;
+  transition:border-color .2s;
+  width:100%;
+}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--stone) 50%),linear-gradient(135deg,var(--stone) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;}
+textarea{min-height:130px;resize:vertical;}
+input::placeholder,textarea::placeholder{color:#5A5A5A;}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ember);}
+:is(a,button,input,select,textarea):focus-visible{outline:2px solid var(--ember);outline-offset:2px;}
+button.btn{border:none;cursor:pointer;font-family:var(--body);grid-column:1/-1;justify-self:start;}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0;}
+.form-status{grid-column:1/-1;font-size:.92rem;display:none;}
+.form-status.ok{display:block;color:var(--white);}
+.form-status.err{display:block;color:var(--ember);}
+
+/* ============ FOOTER ============ */
+footer{padding:64px 0 46px;border-top:1px solid var(--line);}
+.ft-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
+.ft-brand{display:flex;align-items:center;gap:14px;color:var(--white);}
+.ft-brand .name{font-family:var(--display);font-size:1.3rem;letter-spacing:.16em;line-height:1;}
+.ft-brand .name small{display:block;font-size:.55rem;letter-spacing:.44em;color:var(--stone);margin-top:4px;}
+.ft-meta{font-size:.8rem;color:var(--stone);text-align:right;line-height:2;}
+.ft-meta a{color:var(--stone-light);text-decoration:none;}
+.ft-meta a:hover{color:var(--white);}
+@media(max-width:640px){.ft-in{flex-direction:column;align-items:flex-start;}.ft-meta{text-align:left;}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Iteration Consulting home">
+      <span class="mark mark--nav" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
+      <span class="brand-name">Iteration<small>Consulting</small></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#method">The Method</a></li>
+      <li><a href="#services">What We Do</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Work With Us</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <p class="hero-eyebrow rise d1">Iteration Consulting</p>
+  <h1 aria-label="Be Relentless">
+    <span class="word rise d2" aria-hidden="true">B<span class="eb"><b></b><b class="mid"></b><b></b></span></span>
+    <span class="word rise d3" aria-hidden="true">RELENTL<span class="eb"><b></b><b class="mid"></b><b></b></span>SS</span>
+  </h1>
+  <p class="hero-sub rise d4"><strong>We bring the retreat to you.</strong> Team events, consulting, and coaching built around your people. Where they are, and what they're capable of.</p>
+  <div class="hero-ctas rise d4">
+    <a class="btn btn-solid" href="#contact">Work With Us</a>
+    <a class="btn btn-ghost" href="#method">How It Works</a>
+  </div>
+  <p class="hero-foot">Southern California &nbsp;·&nbsp; We travel to the team</p>
+</header>
+
+<!-- ============ DEFINITION / ABOUT ============ -->
+<section class="definition" id="about">
+  <div class="wrap">
+    <div class="def-grid">
+      <div class="def-term reveal">
+        <h3>It·er·a·tion</h3>
+        <p class="pos">noun</p>
+        <p>The repetition of a process, where every pass improves on the last.</p>
+      </div>
+      <div class="def-copy reveal">
+        <p><strong>Most teams don't need another meeting.</strong> They need a shared experience that's earned. Something that breaks the routine, puts everyone on level ground, and shows people what they're actually capable of.</p>
+        <p>Iteration Consulting starts with what's free: showing up, effort, ownership, the why behind the work. Then we build on it through challenges your team takes on together and carries back to the job.</p>
+        <p class="def-kicker">An unorthodox approach, <em>because the ordinary one isn't working.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section class="method" id="method">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">The Method</p>
+      <h2>Every pass makes the team better</h2>
+      <p class="lede">Three passes. Same team, higher standard each time. That's iteration, and it's how every engagement runs.</p>
+    </div>
+    <div class="method-grid">
+      <article class="pass reveal">
+        <p class="pass-label">Pass One</p>
+        <div class="pass-bars" aria-hidden="true"><i></i></div>
+        <h3>Build</h3>
+        <p>Start with the fundamentals everyone controls. Effort, attitude, showing up for each other. We set the standard together, out loud.</p>
+      </article>
+      <article class="pass reveal">
+        <p class="pass-label">Pass Two</p>
+        <div class="pass-bars" aria-hidden="true"><i></i><i></i></div>
+        <h3>Improve</h3>
+        <p>Push past comfortable. Physical challenges and team problems that show how your people really operate, and what they can handle.</p>
+      </article>
+      <article class="pass reveal">
+        <p class="pass-label">Pass Three</p>
+        <div class="pass-bars" aria-hidden="true"><i></i><i class="mid"></i><i></i></div>
+        <h3>Refine</h3>
+        <p>Debrief it, tie it to the day job, and leave with a standard your team keeps repeating. Then run it again, better.</p>
+      </article>
+    </div>
+    <p class="method-kicker reveal">Relentless improvement. <em>That's the name.</em></p>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">What We Do</p>
+      <h2>Built for teams. Tailored to yours.</h2>
+      <p class="lede">For companies, offices, crews, and groups. Anyone who wants their people performing at a higher level.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
+        <h3>Team Building Events</h3>
+        <p>Half-day and full-day challenge events for your whole team. Your park, your site, or a location we scout and set up. We bring the experience to you.</p>
+      </article>
+      <article class="svc reveal">
+        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
+        <h3>Business &amp; Team Consulting</h3>
+        <p>Get to the root of what's holding the team back. Motivation, standards, communication. Fix it at the source, not the symptom.</p>
+      </article>
+      <article class="svc reveal">
+        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
+        <h3>One-on-One Coaching</h3>
+        <p>Direct, personal work for leaders and individuals who want a higher standard, and a straight answer on how to get there.</p>
+      </article>
+      <article class="svc reveal">
+        <span class="mark" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
+        <h3>Youth Programs</h3>
+        <p>Camps and group events that teach young people effort, discipline, and what it feels like to earn something as a team.</p>
+      </article>
+    </div>
+    <div class="svc-custom reveal">
+      <p><strong>Every engagement is custom-built.</strong> Tell us what your team needs. The size, the setting, the goal. We'll build the event around it.</p>
+      <a class="btn btn-solid" href="#contact">Start the Conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WE COME TO YOU ============ -->
+<section class="travel">
+  <div class="wrap">
+    <div class="travel-in">
+      <div class="reveal">
+        <p class="eyebrow">On Location</p>
+        <h2>Your place. Your people. <em>Our problem to solve.</em></h2>
+        <p class="lede">No conference rooms required. We plan it, we set it up, we run it. At a park down the street, on your site, or somewhere we scout for the day. Already planning an offsite or retreat? We'll plug in as the main event.</p>
+      </div>
+      <ul class="travel-facts reveal">
+        <li><span class="k">Based</span><span class="v">Southern California</span></li>
+        <li><span class="k">Travel</span><span class="v">Anywhere the team is. Utah and beyond.</span></li>
+        <li><span class="k">Format</span><span class="v">Half-day &amp; full-day events, weekends available</span></li>
+        <li><span class="k">Group size</span><span class="v">Small crews to full companies</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <p class="eyebrow">Get Started</p>
+        <h2>Tell us about your team</h2>
+        <p class="lede">Send the basics and we'll get back to you to talk through what fits. The event, the timing, and what your people need out of it.</p>
+        <p class="contact-note">Every engagement is scoped on a call. No forms to decode, no fine print.</p>
+      </div>
+      <form id="contact-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
+        <!-- TODO: replace with the real Web3Forms access key before launch -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New inquiry from iterationconsultingllc.com">
+        <input type="hidden" name="from_name" value="Iteration Consulting Website">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field">
+          <label for="f-name">Name *</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email *</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-org">Company / Group</label>
+          <input id="f-org" name="organization" type="text" autocomplete="organization">
+        </div>
+        <div class="field full">
+          <label for="f-size">Group size</label>
+          <select id="f-size" name="group_size">
+            <option value="">Select one</option>
+            <option>Just me</option>
+            <option>2–10</option>
+            <option>11–25</option>
+            <option>26–50</option>
+            <option>50+</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="f-msg">What does your team need? *</label>
+          <textarea id="f-msg" name="message" placeholder="Tell us about the team, the goal, and any dates in mind." required></textarea>
+        </div>
+        <p class="form-status" id="form-status" role="status"></p>
+        <button class="btn btn-solid" type="submit">Send It</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap ft-in">
+    <div class="ft-brand">
+      <span class="mark mark--ft" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
+      <span class="name">Iteration<small>Consulting</small></span>
+    </div>
+    <div class="ft-meta">
+      <a href="mailto:jon@iterationconsultingllc.com">jon@iterationconsultingllc.com</a><br>
+      Southern California &nbsp;·&nbsp; We travel to the team<br>
+      © 2026 Iteration Consulting LLC
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:.15});
+  els.forEach(function(e){ io.observe(e); });
+})();
+
+// Contact form (Web3Forms via fetch)
+(function(){
+  var form = document.getElementById('contact-form');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    status.className = 'form-status';
+    fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if(data.success){
+          status.textContent = 'Received. We\u2019ll be in touch to talk through what fits.';
+          status.className = 'form-status ok';
+          form.reset();
+        } else { throw new Error(data.message || 'Submission failed'); }
+      })
+      .catch(function(){
+        status.textContent = 'Something went wrong. Email us directly at jon@iterationconsultingllc.com.';
+        status.className = 'form-status err';
+      })
+      .finally(function(){ btn.disabled = false; btn.textContent = 'Send It'; });
+  });
+})();
+</script>
+
+</body>
+</html>
