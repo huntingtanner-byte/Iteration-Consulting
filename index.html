@@ -12,6 +12,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://iterationconsultingllc.com">
 
+<!-- Tab icon: the three-bar mark -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0D0D0D">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -74,14 +79,15 @@ a{color:inherit;}
 
 /* ============ THE MARK (three bars) ============ */
 .mark{display:inline-flex;flex-direction:column;justify-content:space-between;flex:none;}
-.mark b{display:block;background:currentColor;border-radius:1px;}
+.mark b{display:block;background:currentColor;}
 .mark b.mid{background:var(--ember);}
-/* nav-size mark */
-.mark--nav{width:22px;height:17px;}
-.mark--nav b{height:3.5px;}
-/* footer mark */
-.mark--ft{width:30px;height:23px;}
-.mark--ft b{height:5px;}
+/* Bar height and gap are whole pixels and the box height is even, so the three
+   bars land on device pixels and render identically. Fractional values here
+   make the top bar antialias thinner than the bottom one. */
+.mark--nav{width:22px;height:18px;}   /* 3 bars x 4px + 2 gaps x 3px */
+.mark--nav b{height:4px;}
+.mark--ft{width:30px;height:26px;}    /* 3 bars x 6px + 2 gaps x 4px */
+.mark--ft b{height:6px;}
 
 /* Bars used AS the letter E inside display type (sized in em so it scales) */
 .eb{
@@ -113,8 +119,13 @@ a{color:inherit;}
   height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);}
-.brand-name{font-family:var(--display);font-size:1.15rem;letter-spacing:var(--track-mid);line-height:1;padding-top:2px;}
-.brand-name small{display:block;font-size:.52rem;letter-spacing:.42em;color:var(--stone);margin-top:3px;}
+/* text-indent equal to the tracking cancels the trailing letter-space, so the
+   centred line is optically centred rather than pushed left by its own gap */
+.brand-name{
+  font-family:var(--display);font-size:1.15rem;letter-spacing:var(--track-mid);
+  line-height:1;padding-top:2px;text-align:center;text-indent:var(--track-mid);
+}
+.brand-name small{display:block;font-size:.52rem;letter-spacing:.42em;color:var(--stone);margin-top:3px;text-indent:.42em;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{
   text-decoration:none;font-size:.72rem;font-weight:600;
@@ -148,7 +159,7 @@ a{color:inherit;}
   background:repeating-linear-gradient(to bottom, rgba(255,255,255,.018) 0 1px, transparent 1px 9px);
 }
 .hero-eyebrow{
-  font-size:clamp(.82rem,2.1vw,1.02rem);
+  font-size:clamp(.9rem,2.4vw,1.18rem);
   font-weight:600;letter-spacing:.44em;text-transform:uppercase;
   color:var(--stone-light);margin-bottom:30px;padding-left:.44em; /* offset tracking */
 }
@@ -206,6 +217,9 @@ h2{
   margin-bottom:22px;
 }
 .lede{max-width:640px;font-size:1.05rem;}
+/* every section ends with a way into the form */
+.section-cta{margin-top:42px;}
+.section-cta.mid{text-align:center;margin-top:46px;}
 
 /* scroll reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);}
@@ -282,7 +296,7 @@ h2{
 .svc-custom .btn-solid{white-space:nowrap;}
 
 /* ============ WE COME TO YOU ============ */
-.travel{border-bottom:1px solid var(--line);}
+.travel{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
 .travel-in{display:grid;grid-template-columns:1.3fr 1fr;gap:70px;align-items:center;}
 @media(max-width:860px){.travel-in{grid-template-columns:1fr;gap:40px;}}
 .travel h2 em{font-style:normal;color:var(--ember);}
@@ -333,8 +347,8 @@ button.btn:disabled{opacity:.55;cursor:default;}
 footer{padding:64px 0 46px;border-top:1px solid var(--line);}
 .ft-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
 .ft-brand{display:flex;align-items:center;gap:14px;color:var(--white);}
-.ft-brand .name{font-family:var(--display);font-size:1.3rem;letter-spacing:.16em;line-height:1;}
-.ft-brand .name small{display:block;font-size:.55rem;letter-spacing:.44em;color:var(--stone);margin-top:4px;}
+.ft-brand .name{font-family:var(--display);font-size:1.3rem;letter-spacing:.16em;line-height:1;text-align:center;text-indent:.16em;}
+.ft-brand .name small{display:block;font-size:.55rem;letter-spacing:.44em;color:var(--stone);margin-top:4px;text-indent:.44em;}
 .ft-meta{font-size:.8rem;color:var(--stone);text-align:right;line-height:2;}
 .ft-meta a{color:var(--stone-light);text-decoration:none;}
 .ft-meta a:hover{color:var(--white);}
@@ -351,9 +365,9 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
       <span class="brand-name">Iteration<small>Consulting</small></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#method">The Method</a></li>
       <li><a href="#services">What We Do</a></li>
+      <li><a href="#method">The Method</a></li>
+      <li><a href="#about">Why It Works</a></li>
     </ul>
     <a class="nav-cta" href="#contact">Work With Us</a>
   </div>
@@ -373,56 +387,6 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
   </div>
   <p class="hero-foot">Southern California &nbsp;·&nbsp; We travel to the team</p>
 </header>
-
-<!-- ============ DEFINITION / ABOUT ============ -->
-<section class="definition" id="about">
-  <div class="wrap">
-    <div class="def-grid">
-      <div class="def-term reveal">
-        <h2>It·er·a·tion</h2>
-        <p class="pos">noun</p>
-        <p>The repetition of a process, where every pass improves on the last.</p>
-      </div>
-      <div class="def-copy reveal">
-        <p><strong>Most teams don't need another meeting.</strong> They need a shared experience that's earned. Something that breaks the routine, puts everyone on level ground, and shows people what they're actually capable of.</p>
-        <p>Iteration Consulting starts with what's free: showing up, effort, ownership, the why behind the work. Then we build on it through challenges your team takes on together and carries back to the job.</p>
-        <p class="def-kicker">An unorthodox approach, <em>because the ordinary one isn't working.</em></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ METHOD ============ -->
-<section class="method" id="method">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="eyebrow">The Method</p>
-      <h2>Every pass makes the team better</h2>
-      <p class="lede">Three passes. Same team, higher standard each time. That's iteration, and it's how every engagement runs.</p>
-    </div>
-    <div class="method-grid">
-      <article class="pass reveal">
-        <p class="pass-label">Pass One</p>
-        <div class="pass-bars" aria-hidden="true"><i></i></div>
-        <h3>Build</h3>
-        <p>Start with the fundamentals everyone controls. Effort, attitude, showing up for each other. We set the standard together, out loud.</p>
-      </article>
-      <article class="pass reveal">
-        <p class="pass-label">Pass Two</p>
-        <div class="pass-bars" aria-hidden="true"><i></i><i class="mid"></i></div>
-        <h3>Improve</h3>
-        <p>Push past comfortable. Physical challenges and team problems that show how your people really operate, and what they can handle.</p>
-      </article>
-      <article class="pass reveal">
-        <p class="pass-label">Pass Three</p>
-        <div class="pass-bars" aria-hidden="true"><i></i><i class="mid"></i><i></i></div>
-        <h3>Refine</h3>
-        <p>Debrief it, tie it to the day job, and leave with a standard your team keeps repeating. Then run it again, better.</p>
-      </article>
-    </div>
-    <p class="method-kicker reveal">Relentless improvement. <em>That's the name.</em></p>
-  </div>
-</section>
 
 <!-- ============ SERVICES ============ -->
 <section class="services" id="services">
@@ -457,6 +421,62 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
   </div>
 </section>
 
+<!-- ============ METHOD ============ -->
+<section class="method" id="method">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">The Method</p>
+      <h2>Every pass makes the team better</h2>
+      <p class="lede">Three passes. Same team, higher standard each time. That's iteration, and it's how every engagement runs.</p>
+    </div>
+    <div class="method-grid">
+      <article class="pass reveal">
+        <p class="pass-label">Pass One</p>
+        <div class="pass-bars" aria-hidden="true"><i></i></div>
+        <h3>Build</h3>
+        <p>Start with the fundamentals everyone controls. Effort, attitude, showing up for each other. We set the standard together, out loud.</p>
+      </article>
+      <article class="pass reveal">
+        <p class="pass-label">Pass Two</p>
+        <div class="pass-bars" aria-hidden="true"><i></i><i class="mid"></i></div>
+        <h3>Improve</h3>
+        <p>Push past comfortable. Physical challenges and team problems that show how your people really operate, and what they can handle.</p>
+      </article>
+      <article class="pass reveal">
+        <p class="pass-label">Pass Three</p>
+        <div class="pass-bars" aria-hidden="true"><i></i><i class="mid"></i><i></i></div>
+        <h3>Refine</h3>
+        <p>Debrief it, tie it to the day job, and leave with a standard your team keeps repeating. Then run it again, better.</p>
+      </article>
+    </div>
+    <p class="method-kicker reveal">Relentless improvement. <em>That's the name.</em></p>
+    <div class="section-cta mid reveal">
+      <a class="btn btn-solid" href="#contact">Run This With Your Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEFINITION / WHY IT WORKS ============ -->
+<section class="definition" id="about">
+  <div class="wrap">
+    <div class="def-grid">
+      <div class="def-term reveal">
+        <h2>It·er·a·tion</h2>
+        <p class="pos">noun</p>
+        <p>The repetition of a process, where every pass improves on the last.</p>
+      </div>
+      <div class="def-copy reveal">
+        <p><strong>Most teams don't need another meeting.</strong> They need a shared experience that's earned. Something that breaks the routine, puts everyone on level ground, and shows people what they're actually capable of.</p>
+        <p>Iteration Consulting starts with what's free: showing up, effort, ownership, the why behind the work. Then we build on it through challenges your team takes on together and carries back to the job.</p>
+        <p class="def-kicker">An unorthodox approach, <em>because the ordinary one isn't working.</em></p>
+        <div class="section-cta">
+          <a class="btn btn-solid" href="#contact">Work With Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WE COME TO YOU ============ -->
 <section class="travel">
   <div class="wrap">
@@ -465,6 +485,9 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
         <p class="eyebrow">On Location</p>
         <h2>Your place. Your people. <em>Our problem to solve.</em></h2>
         <p class="lede">No conference rooms required. We plan it, we set it up, we run it. At a park down the street, on your site, or somewhere we scout for the day. Already planning an offsite or retreat? We'll plug in as the main event.</p>
+        <div class="section-cta">
+          <a class="btn btn-solid" href="#contact">Plan Your Event</a>
+        </div>
       </div>
       <ul class="travel-facts reveal">
         <li><span class="k">Based</span><span class="v">Southern California</span></li>
