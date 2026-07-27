@@ -119,13 +119,9 @@ a{color:inherit;}
   height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);}
-/* text-indent equal to the tracking cancels the trailing letter-space, so the
-   centred line is optically centred rather than pushed left by its own gap */
-.brand-name{
-  font-family:var(--display);font-size:1.15rem;letter-spacing:var(--track-mid);
-  line-height:1;padding-top:2px;text-align:center;text-indent:var(--track-mid);
-}
-.brand-name small{display:block;font-size:.52rem;letter-spacing:.42em;color:var(--stone);margin-top:3px;text-indent:.42em;}
+/* CONSULTING sits flush left under ITERATION, not centred */
+.brand-name{font-family:var(--display);font-size:1.15rem;letter-spacing:var(--track-mid);line-height:1;padding-top:2px;}
+.brand-name small{display:block;font-size:.52rem;letter-spacing:.42em;color:var(--stone);margin-top:3px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{
   text-decoration:none;font-size:.72rem;font-weight:600;
@@ -349,8 +345,8 @@ button.btn:disabled{opacity:.55;cursor:default;}
 footer{padding:52px 0 40px;border-top:1px solid var(--line);}
 .ft-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
 .ft-brand{display:flex;align-items:center;gap:14px;color:var(--white);}
-.ft-brand .name{font-family:var(--display);font-size:1.3rem;letter-spacing:.16em;line-height:1;text-align:center;text-indent:.16em;}
-.ft-brand .name small{display:block;font-size:.55rem;letter-spacing:.44em;color:var(--stone);margin-top:4px;text-indent:.44em;}
+.ft-brand .name{font-family:var(--display);font-size:1.3rem;letter-spacing:.16em;line-height:1;}
+.ft-brand .name small{display:block;font-size:.55rem;letter-spacing:.44em;color:var(--stone);margin-top:4px;}
 .ft-meta{font-size:.8rem;color:var(--stone);text-align:right;line-height:2;}
 .ft-meta a{color:var(--stone-light);text-decoration:none;}
 .ft-meta a:hover{color:var(--white);}
