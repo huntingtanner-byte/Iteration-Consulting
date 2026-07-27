@@ -487,10 +487,10 @@ footer{padding:64px 0 46px;border-top:1px solid var(--line);}
         <p class="contact-note">Every engagement is scoped on a call. No forms to decode, no fine print.</p>
       </div>
       <form id="contact-form" method="POST" action="https://api.web3forms.com/submit" novalidate>
-        <!-- Sign up at web3forms.com using jon@iterationconsultingllc.com and paste the
-             key here. Submissions then land in that inbox. This key is public by design.
-             Until it is set, the form falls back to opening a pre-filled email. -->
-        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <!-- Registered to jon@iterationconsultingllc.com; submissions land in that inbox.
+             Public by design: it ships in the page source and grants no account access.
+             If it is ever cleared, the form falls back to opening a pre-filled email. -->
+        <input type="hidden" name="access_key" value="471cc363-2952-4db2-ade9-a1a249e2f06a">
         <input type="hidden" name="subject" value="New inquiry from iterationconsultingllc.com">
         <input type="hidden" name="from_name" value="Iteration Consulting Website">
         <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
