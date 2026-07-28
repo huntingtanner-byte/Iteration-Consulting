@@ -308,6 +308,24 @@ h2{
 }
 .travel-facts .v{font-size:.95rem;color:var(--stone-light);text-align:right;}
 
+/* ============ ADDITIONAL OFFERINGS ============ */
+/* Deliberately quieter than the primary sections: tighter padding, smaller
+   heading, no orange eyebrow, ghost buttons. It reads as a footnote, not a
+   fifth service. */
+.extras{padding:clamp(44px,3.6vw,58px) 0;border-bottom:1px solid var(--line);}
+.extras h2{font-size:clamp(1.5rem,2.8vw,2.05rem);margin-bottom:10px;}
+.extras .lede{font-size:.97rem;color:var(--stone);max-width:540px;}
+.extras-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:28px;}
+@media(max-width:760px){.extras-grid{grid-template-columns:1fr;}}
+.extra{border:1px solid var(--line);padding:26px 26px 28px;transition:border-color .25s;}
+.extra:hover{border-color:var(--stone);}
+.extra h3{
+  font-family:var(--display);font-weight:400;font-size:1.35rem;letter-spacing:.09em;
+  color:var(--white);margin-bottom:10px;
+}
+.extra p{font-size:.94rem;color:var(--stone-light);margin-bottom:20px;}
+.extra .btn{padding:12px 24px;font-size:.7rem;}
+
 /* ============ CONTACT ============ */
 .contact{background:var(--ink-2);}
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:54px;align-items:start;}
@@ -497,6 +515,28 @@ footer{padding:52px 0 40px;border-top:1px solid var(--line);}
   </div>
 </section>
 
+<!-- ============ ADDITIONAL OFFERINGS ============ -->
+<section class="extras" id="extras">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Additional Offerings</h2>
+      <p class="lede">Outside the team work, personalized instruction is available for individuals and families.</p>
+    </div>
+    <div class="extras-grid">
+      <article class="extra reveal">
+        <h3>Home &amp; Self-Defense</h3>
+        <p>Practical, personalized instruction focused on helping you become more prepared and confident in your own home.</p>
+        <a class="btn btn-ghost" href="#contact" data-interest="Home &amp; Self-Defense">Request Information</a>
+      </article>
+      <article class="extra reveal">
+        <h3>Physical Fitness</h3>
+        <p>An unorthodox approach to push your limits, with personalized instruction brought directly to you.</p>
+        <a class="btn btn-ghost" href="#contact" data-interest="Physical Fitness">Request Information</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CONTACT ============ -->
 <section class="contact" id="contact">
   <div class="wrap">
@@ -580,6 +620,19 @@ footer{padding:52px 0 40px;border-top:1px solid var(--line);}
     });
   },{threshold:.15});
   els.forEach(function(e){ io.observe(e); });
+})();
+
+// Additional offerings: carry the chosen topic into the message field, so an
+// enquiry arrives labelled instead of blank.
+(function(){
+  var msg = document.getElementById('f-msg');
+  if(!msg) return;
+  Array.prototype.forEach.call(document.querySelectorAll('[data-interest]'), function(el){
+    el.addEventListener('click', function(){
+      if(msg.value.trim()) return;               // never overwrite what someone typed
+      msg.value = 'I would like more information about ' + el.getAttribute('data-interest') + '.';
+    });
+  });
 })();
 
 // Contact form (Web3Forms via fetch, with a direct-email fallback)
