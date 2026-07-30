@@ -108,6 +108,16 @@ a{color:inherit;}
 /* when the bars sit mid-word, the flat right edge crowds the next letter.
    the letters themselves have curves that self-space; the bars do not. */
 .eb--in{margin-right:.10em;}
+/* Letter-spacing is added after every character but NOT after an atomic inline
+   like this one, so the bars inherit the full tracking on their left and none
+   on their right. Each context re-adds that tracking, less the difference
+   between the neighbouring letters' sidebearings (the bars have none):
+     Bebas   T rsb .0107em vs R lsb .0400em -> tracking - .029em
+     Raleway T rsb .0127em vs R lsb .0800em -> tracking - .067em */
+.brand-name .eb{margin-right:.151em;}       /* tracking .18em */
+.ft-brand .name .eb{margin-right:.131em;}   /* tracking .16em */
+.hero-eyebrow .eb{margin-right:.373em;}     /* tracking .44em */
+
 /* tuned for the Raleway eyebrow: lighter strokes than Bebas, so thinner bars */
 .eb--ui{width:.54em;height:.71em;}
 .eb--ui b{height:.13em;}
