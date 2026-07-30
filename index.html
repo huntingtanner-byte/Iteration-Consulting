@@ -81,7 +81,10 @@ a{color:inherit;}
 .mark{display:inline-flex;flex-direction:column;justify-content:space-between;flex:none;}
 .mark b{display:block;background:currentColor;}
 .mark b.mid{background:var(--ember);}
-/* Bar height and gap are whole pixels and the box height is even, so the three
+/* Standalone icon. Currently unused: the wordmark carries the mark as its E,
+   so a separate icon beside it would repeat the same shape twice. Kept here
+   so the nav/footer icon can be restored with one span.
+   Bar height and gap are whole pixels and the box height is even, so the three
    bars land on device pixels and render identically. Fractional values here
    make the top bar antialias thinner than the bottom one. */
 .mark--nav{width:22px;height:18px;}   /* 3 bars x 4px + 2 gaps x 3px */
@@ -105,6 +108,16 @@ a{color:inherit;}
 /* when the bars sit mid-word, the flat right edge crowds the next letter.
    the letters themselves have curves that self-space; the bars do not. */
 .eb--in{margin-right:.10em;}
+/* tuned for the Raleway eyebrow: lighter strokes than Bebas, so thinner bars */
+.eb--ui{width:.54em;height:.71em;}
+.eb--ui b{height:.13em;}
+
+/* visible to screen readers only: carries the real word where the bars
+   replace a letter, so "ITERATION" is never read as "IT RATION" */
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
 
 /* ============ NAV ============ */
 .nav{
@@ -191,6 +204,11 @@ a{color:inherit;}
   position:absolute;bottom:28px;left:0;right:0;
   display:flex;justify-content:center;
   font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);
+}
+
+/* on narrow screens this line wrapped and left "TEAM" orphaned on its own row */
+@media(max-width:520px){
+  .hero-foot{font-size:.62rem;letter-spacing:.2em;text-wrap:balance;}
 }
 
 /* hero load-in */
@@ -377,8 +395,7 @@ footer{padding:52px 0 40px;border-top:1px solid var(--line);}
 <nav class="nav">
   <div class="nav-in">
     <a class="brand" href="#top" aria-label="Iteration Consulting home">
-      <span class="mark mark--nav" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
-      <span class="brand-name">Iteration<small>Consulting</small></span>
+      <span class="brand-name" aria-hidden="true">IT<span class="eb"><b></b><b class="mid"></b><b></b></span>RATION<small>Consulting</small></span>
     </a>
     <ul class="nav-links">
       <li><a href="#services">What We Do</a></li>
@@ -391,7 +408,10 @@ footer{padding:52px 0 40px;border-top:1px solid var(--line);}
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
-  <p class="hero-eyebrow rise d1">Iteration Consulting</p>
+  <p class="hero-eyebrow rise d1">
+    <span class="sr-only">Iteration Consulting</span>
+    <span aria-hidden="true">IT<span class="eb eb--ui"><b></b><b class="mid"></b><b></b></span>RATION CONSULTING</span>
+  </p>
   <h1 aria-label="Be Relentless">
     <span class="word rise d2" aria-hidden="true">B<span class="eb"><b></b><b class="mid"></b><b></b></span></span>
     <span class="word rise d3" aria-hidden="true">RELENTL<span class="eb eb--in"><b></b><b class="mid"></b><b></b></span>SS</span>
@@ -598,8 +618,11 @@ footer{padding:52px 0 40px;border-top:1px solid var(--line);}
 <footer>
   <div class="wrap ft-in">
     <div class="ft-brand">
-      <span class="mark mark--ft" aria-hidden="true"><b></b><b class="mid"></b><b></b></span>
-      <span class="name">Iteration<small>Consulting</small></span>
+      <span class="name">
+        <span class="sr-only">Iteration Consulting</span>
+        <span aria-hidden="true">IT<span class="eb"><b></b><b class="mid"></b><b></b></span>RATION</span>
+        <small aria-hidden="true">Consulting</small>
+      </span>
     </div>
     <div class="ft-meta">
       <a href="mailto:jon@iterationconsultingllc.com">jon@iterationconsultingllc.com</a><br>
