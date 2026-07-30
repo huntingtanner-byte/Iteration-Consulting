@@ -142,8 +142,10 @@ a{color:inherit;}
   height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);}
-/* CONSULTING sits flush left under ITERATION, not centred */
-.brand-name{font-family:var(--display);font-size:1.15rem;letter-spacing:var(--track-mid);line-height:1;padding-top:2px;}
+/* CONSULTING centred under ITERATION. Both lines carry near-identical trailing
+   letter-space in absolute px, so it cancels out and plain centring lands the
+   ink within a quarter pixel: no text-indent correction needed. */
+.brand-name{font-family:var(--display);font-size:1.15rem;letter-spacing:var(--track-mid);line-height:1;padding-top:2px;text-align:center;}
 .brand-name small{display:block;font-size:.52rem;letter-spacing:.42em;color:var(--stone);margin-top:3px;}
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{
@@ -391,7 +393,7 @@ button.btn:disabled{opacity:.55;cursor:default;}
 footer{padding:52px 0 40px;border-top:1px solid var(--line);}
 .ft-in{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
 .ft-brand{display:flex;align-items:center;gap:14px;color:var(--white);}
-.ft-brand .name{font-family:var(--display);font-size:1.3rem;letter-spacing:.16em;line-height:1;}
+.ft-brand .name{font-family:var(--display);font-size:1.3rem;letter-spacing:.16em;line-height:1;text-align:center;}
 .ft-brand .name small{display:block;font-size:.55rem;letter-spacing:.44em;color:var(--stone);margin-top:4px;}
 .ft-meta{font-size:.8rem;color:var(--stone);text-align:right;line-height:2;}
 .ft-meta a{color:var(--stone-light);text-decoration:none;}
